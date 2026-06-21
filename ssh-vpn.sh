@@ -281,16 +281,8 @@ fi
 
 # Install Stunnel5
 cd /root/
-wget -q "https://raw.githubusercontent.com/d0x-dev/Infinite-SSH/main/stunnel5.zip"
-unzip stunnel5.zip
-cd /root/stunnel
-chmod +x configure
-./configure
-make
-make install
-cd /root
-rm -r -f stunnel
-rm -f stunnel5.zip
+apt-get install stunnel4 -y
+rm -fr /etc/stunnel5
 rm -fr /etc/stunnel5
 mkdir -p /etc/stunnel5
 chmod 644 /etc/stunnel5
@@ -355,16 +347,13 @@ wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/d0x-dev/Infin
 # Ubah Izin Akses
 #chmod 600 /etc/stunnel5/stunnel5.pem
 chmod +x /etc/init.d/stunnel5
-cp -r /usr/local/bin/stunnel /usr/local/bin/stunnel5
-#mv /usr/local/bin/stunnel /usr/local/bin/stunnel5
-
-# Remove File
+ln -sf /usr/bin/stunnel4 /usr/local/bin/stunnel5
+# Cleanup old dirs
 rm -r -f /usr/local/share/doc/stunnel/
 rm -r -f /usr/local/etc/stunnel/
 rm -f /usr/local/bin/stunnel
 rm -f /usr/local/bin/stunnel3
 rm -f /usr/local/bin/stunnel4
-#rm -f /usr/local/bin/stunnel5
 
 # banner /etc/issue.net
 sleep 1
