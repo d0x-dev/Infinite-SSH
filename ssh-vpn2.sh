@@ -503,6 +503,11 @@ sudo iptables -A FORWARD -m string --algo bm --string "announce.php?passkey=" -j
 sudo iptables -A FORWARD -m string --algo bm --string "torrent" -j DROP
 sudo iptables -A FORWARD -m string --algo bm --string "announce" -j DROP
 sudo iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
+sudo iptables -t nat -A PREROUTING -p tcp --dport 1:21 -j REDIRECT --to-ports 443
+sudo iptables -t nat -A PREROUTING -p tcp --dport 23:79 -j REDIRECT --to-ports 443
+sudo iptables -t nat -A PREROUTING -p tcp --dport 81:442 -j REDIRECT --to-ports 443
+sudo iptables -t nat -A PREROUTING -p tcp --dport 444:65535 -j REDIRECT --to-ports 443
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 443
 sudo iptables-save > /etc/iptables.up.rules
 sudo iptables-restore -t < /etc/iptables.up.rules
 sudo netfilter-persistent save >/dev/null 2>&1
