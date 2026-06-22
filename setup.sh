@@ -140,7 +140,7 @@ mkdir -p /usr/local/etc/xray
 #rm -fr /etc/xray/domain
 # // String / Request Data
 mkdir -p /var/lib/scrz-prem >/dev/null 2>&1
-host="gaming.is-pro.indevs.in"
+read -rp "Please enter your domain: " host
 echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
 echo $host > /etc/xray/domain
 echo $host > /root/domain
@@ -152,7 +152,7 @@ echo -e "$white\033[0;34m┌─────────────────�
 echo -e "                          ⇱ INSTALL DOMAIN ⇲            "
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1
-wget https://raw.githubusercontent.com/d0x-dev/Infinite-SSH/main/cf.sh && chmod +x cf.sh && ./cf.sh
+# wget https://raw.githubusercontent.com/d0x-dev/Infinite-SSH/main/cf.sh && chmod +x cf.sh && ./cf.sh
 #install jembot
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m           ⇱ Install Jembot ⇲            \E[0m$NC"
